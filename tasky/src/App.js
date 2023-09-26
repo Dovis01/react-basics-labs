@@ -2,7 +2,7 @@ import Task from "./components/Task";
 import AddTaskForm from './components/Form';
 import "./App.css";
 import React, {useState} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
         ]
     });
 
-    const [ formState, setFormState ] = useState({
+    const [formState, setFormState] = useState({
         title: "",
         description: "",
         deadline: ""
@@ -38,7 +38,7 @@ function App() {
     const formChangeHandler = (event) => {
         let form = {...formState};
         //event.target  ->  <input type="text" name="title" required>
-        switch(event.target.name) {
+        switch (event.target.name) {
             case "title":
                 form.title = event.target.value;
                 break;
@@ -79,10 +79,10 @@ function App() {
                     key={task.id}
                     done={task.done}
                     markDone={() => doneHandler(index)}
-                    deleteTask = {() => deleteHandler(index)}
+                    deleteTask={() => deleteHandler(index)}
                 />
             ))}
-            <AddTaskForm submit={formSubmitHandler} change={formChangeHandler} />
+            <AddTaskForm submit={formSubmitHandler} change={formChangeHandler}/>
         </div>
         /*
             <div className="container">
