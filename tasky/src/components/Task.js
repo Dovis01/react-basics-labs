@@ -7,6 +7,28 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Chip from "@mui/material/Chip";
+
+const getColorForLabel = (label) => {
+    // 根据 label 值返回对应的颜色
+    switch (label) {
+        case 'Low':
+            return 'success';
+        case 'Medium':
+            return 'warning';
+        case 'High':
+            return 'error';
+        default:
+            return 'default';
+    }
+};
+
+const CustomChip = ({label}) => {
+    const color = getColorForLabel(label);
+    return (
+        <Chip label={label} color={color}/>
+    );
+};
 
 
 const Task = (props) => {
@@ -44,6 +66,12 @@ const Task = (props) => {
                             Due: {props.deadline}
                         </Typography>
                     </Box>
+                    {/*success warning error */}
+                    <Grid container justifyContent="center" padding={'20px'}>
+                        <Grid item>
+                            <CustomChip label={props.priority}/>
+                        </Grid>
+                    </Grid>
                     <Typography
                         component="p"
                         variant="subtitle1"

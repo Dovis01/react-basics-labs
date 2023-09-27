@@ -11,17 +11,18 @@ function App() {
 
     const [taskState, setTaskState] = useState({
         tasks: [
-            {id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today", done: false},
-            {id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow", done: false},
-            {id: 3, title: "Tidy up", deadline: "Today", done: false},
-            {id: 4, title: "Dry up", description: "Dry clothes and put away", deadline: "Today", done: false},
-            {id: 5, title: "Clean up", description: "Clean clothes and put away", deadline: "Today", done: false}
+            {id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today", done: false, priority: "Low"},
+            {id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow", done: false, priority: "Medium"},
+            {id: 3, title: "Tidy up", deadline: "Today", done: false, priority: "High"},
+            {id: 4, title: "Dry up", description: "Dry clothes and put away", deadline: "Today", done: false, priority: "High"},
+            {id: 5, title: "Clean up", description: "Clean clothes and put away", deadline: "Today", done: false, priority: "Low"}
         ]
     });
 
     const [formState, setFormState] = useState({
         title: "",
         description: "",
+        priority: "",
         deadline: ""
     });
 
@@ -47,6 +48,9 @@ function App() {
                 break;
             case "description":
                 form.description = event.target.value;
+                break;
+            case "priority":
+                form.priority = event.target.value;
                 break;
             case "deadline":
                 form.deadline = event.target.value;
@@ -101,6 +105,7 @@ function App() {
                             title={task.title}
                             description={task.description}
                             deadline={task.deadline}
+                            priority={task.priority}
                             done={task.done}
                             key={task.id}
                             markDone={() => doneHandler(index)}
